@@ -1,0 +1,36 @@
+name: Update /repo/Packages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo apt update && sudo apt install -y dpkg-dev gzip
+
+      - name: Generate Packages index
+        run: |
+          cd repo
+          dpkg-scanpackages . /dev/null > Packages
+          gzip -k -f Packages
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add repo/Packages repo/Packages.gz
+
+          git commit -m "Update Packages index" || echo "No changes to commit"
+          git push
