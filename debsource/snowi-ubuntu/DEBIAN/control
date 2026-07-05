@@ -1,6 +1,0 @@
-Package: snowi-ubuntu
-Version: 1.0-ubuntu
-Architecture: all
-Maintainer: SnowOS
-Depends: bash, coreutils, curl, apt
-Description: SnowOS installer script
