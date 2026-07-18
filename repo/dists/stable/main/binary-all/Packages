@@ -3,10 +3,10 @@ Version: 1.0
 Architecture: any
 Maintainer: SnowOS Team
 Filename: repo/pool/main/s/snowi/snowi_1.0_all.deb
-Size: 3072
-MD5sum: 10d9e8587056a0a88269c7ecccbd2d42
-SHA1: 828d6ff5d733b6287b1a6000162691ab6231777f
-SHA256: 90e06d100ebe38f9e5196cd09803209d263cbd2fc08660cf858642b423fc2a7f
+Size: 3068
+MD5sum: 6f4bc2e725a053a2cfd43bf932ba812b
+SHA1: 47604a6221efcba2ac06d0b2fdc73772cb414d70
+SHA256: 86f8cd723466945caeccf8f69cb608785f8316b2a72a622a80f98540066e474e
 Section: admin
 Description: SnowOS installer utility
 
