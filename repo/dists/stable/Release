@@ -1,17 +1,23 @@
-Date: Sat, 18 Jul 2026 19:08:36 +0000
+Architectures: all
+Codename: stable
+Components: main
+Date: Sat, 18 Jul 2026 19:15:15 +0000
+Label: SnowOS Repository
+Origin: SnowOS
+Suite: stable
 MD5Sum:
- 43886c4692491d1d07acd682df248ffc               38 Release
+ d1dd1f85983216b97841473a3428cf22              145 Release
  6da643128f19bd60c9d1dba56a051f88              452 main/binary-all/Packages
- e72d40a435199c1bdb1e11d141bb7375              352 main/binary-all/Packages.gz
+ 65b617a2582f411bf8f251c99521b8a8              352 main/binary-all/Packages.gz
 SHA1:
- bc39c117e4b0b56265f3982491dc2024f4bda4a8               38 Release
+ 4992d6c6954e1a5f7a2f2c082e7a6a9e132eb711              145 Release
  cdb284eaa570eb0d259157274bfb314b080f1d59              452 main/binary-all/Packages
- 13079298b00b183b20fe86e263e9e7b6b564597f              352 main/binary-all/Packages.gz
+ b44c01b73e150b31f89be594713402469fd92f5c              352 main/binary-all/Packages.gz
 SHA256:
- 30b385e21439833e73d65ef8af39251c6bf5711d173f18463032bf1eb4a692d2               38 Release
+ ad8de81494bdfaa5b34e8ec840cd278bc87a448c712bc7250526a5252e592316              145 Release
  4c3e0c673a326a96dd9bc8d44117e3ed89043ddc1b576db0a62162549a4f24ca              452 main/binary-all/Packages
- ac22a5940f803d2be9a6b4eed4219550e790ddf4ad1e2b545f8e080390464d68              352 main/binary-all/Packages.gz
+ ff07b1ece0a0489210f0d991f324a456e1b66a5245e4a82de48dfcb06bd089cc              352 main/binary-all/Packages.gz
 SHA512:
- f9dcfd8127233fbe00c308f92aea97d2fa62fb3a6a3ecee664ba097019e399d8a6106c7d1da734323bfec72de4cca0cdf933f871f1c8262292632504fba3bb11               38 Release
+ 0a398a275ea32bcbe009f488284f545f33a58dcd56fbe5cb31525457e238f15dcd321c589ccbb93e9ee1315eb790a4ae7f6aaf87ea2bcb80dee17061f5b2628b              145 Release
  c114ba0ca0c2c4c0fbbd341dea32bc8070718ea001a7bff22388ebcbb9049659171cb7f6b0d899fdc72105d69caaa4c38b5b6e462253c0b152959fcd3af31987              452 main/binary-all/Packages
- bb7083087e995839a17f68a30742725fafd5f9044ac717a75db2b3cd91715927db7cd18b6e10b6f5a04e341bd8747ca28123bf63d450e73ce6adfb4443323e9b              352 main/binary-all/Packages.gz
+ 361bf3afc098a559321a37c3498a16038ccf0494856541277bfc7365f5a8923cde0c1727a9b229e756e44c477bf109513d091ca9f8992290c182f7c6616787c4              352 main/binary-all/Packages.gz
