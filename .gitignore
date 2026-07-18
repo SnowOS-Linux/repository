@@ -1,0 +1,3 @@
+# Remove .tmp files for commits
+*.tmp
+*.temp
