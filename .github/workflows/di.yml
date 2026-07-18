@@ -1,0 +1,102 @@
+name: Generate directory indexes
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate indexes
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          import html
+
+          ROOT = Path("repo")
+
+          TEMPLATE = """<!DOCTYPE html>
+          <html>
+          <head>
+          <title>Index of {title}</title>
+          </head>
+
+          <body>
+          <h1>Index of {title}</h1>
+
+          <pre>
+          <a href="{parent}">../</a>
+          {content}
+          </pre>
+
+          </body>
+          </html>
+          """
+
+          def generate_index(directory):
+              items = []
+
+              for item in sorted(directory.iterdir()):
+                  if item.name == "index.html":
+                      continue
+
+                  name = item.name
+
+                  if item.is_dir():
+                      name += "/"
+
+                  items.append(
+                      f'<a href="{html.escape(name)}">{html.escape(name)}</a>'
+                  )
+
+              if directory == ROOT:
+                  parent = ""
+                  title = "/"
+              else:
+                  parent = "../"
+                  title = "/" + str(directory.relative_to(ROOT)) + "/"
+
+              page = TEMPLATE.format(
+                  title=html.escape(title),
+                  parent=parent,
+                  content="\n".join(items)
+              )
+
+              (directory / "index.html").write_text(
+                  page,
+                  encoding="utf-8"
+              )
+
+          directories = [
+              ROOT,
+              *[p for p in ROOT.rglob("*") if p.is_dir()]
+          ]
+
+          for directory in directories:
+              generate_index(directory)
+
+          PY
+
+      - name: Commit generated indexes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add repo/
+
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+
+          git commit -m "Generate directory indexes"
+          git push
