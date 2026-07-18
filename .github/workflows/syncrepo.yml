@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: apt-repository-update
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -48,4 +52,7 @@ jobs:
           fi
 
           git commit -m "Update APT repository metadata"
-          git push
+
+          git pull --rebase origin main
+
+          git push origin main
