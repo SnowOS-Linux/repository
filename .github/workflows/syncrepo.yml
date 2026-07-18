@@ -32,33 +32,41 @@ jobs:
 
           cd repo
 
-          mkdir -p dists/stable/main/binary-all
-
           dpkg-scanpackages pool /dev/null \
             > dists/stable/main/binary-all/Packages
 
-          gzip -9 -kf dists/stable/main/binary-all/Packages
+          cp dists/stable/main/binary-all/Packages \
+             dists/stable/main/binary-arm64/Packages
 
-          cat > ../apt-release.conf <<EOF
+          cp dists/stable/main/binary-all/Packages \
+             dists/stable/main/binary-amd64/Packages
+
+          gzip -9 -kf dists/stable/main/binary-all/Packages
+          gzip -9 -kf dists/stable/main/binary-arm64/Packages
+          gzip -9 -kf dists/stable/main/binary-amd64/Packages
+
+          cat > apt-release.conf <<EOF
           APT::FTPArchive::Release::Origin "SnowOS";
           APT::FTPArchive::Release::Label "SnowOS Repository";
           APT::FTPArchive::Release::Suite "stable";
           APT::FTPArchive::Release::Codename "stable";
-          APT::FTPArchive::Release::Architectures "all";
+          APT::FTPArchive::Release::Architectures "all amd64 arm64";
           APT::FTPArchive::Release::Components "main";
           EOF
 
           apt-ftparchive \
-            -c ../apt-release.conf \
+            -c apt-release.conf \
             release dists/stable \
             > dists/stable/Release
+
+          cd ..
 
       - name: Commit generated metadata
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add repo/dists
+          git add repo
 
           if git diff --cached --quiet; then
             echo "No metadata changes."
