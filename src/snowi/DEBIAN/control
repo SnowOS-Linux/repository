@@ -1,0 +1,8 @@
+Package: snowi
+Version: 1.0
+Architecture: any
+Maintainer: SnowOS Team
+Description: SnowOS installer utility
+Section: admin
+Priority: optional
+Depends: bash, coreutils, curl, debconf, passwd, python3, python-is-python3, zsh, git
