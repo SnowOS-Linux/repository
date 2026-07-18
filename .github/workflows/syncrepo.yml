@@ -36,7 +36,18 @@ jobs:
 
           gzip -9 -kf repo/dists/stable/main/binary-all/Packages
 
-          apt-ftparchive release repo/dists/stable \
+          cat > apt-release.conf <<EOF
+          APT::FTPArchive::Release::Origin "SnowOS";
+          APT::FTPArchive::Release::Label "SnowOS Repository";
+          APT::FTPArchive::Release::Suite "stable";
+          APT::FTPArchive::Release::Codename "stable";
+          APT::FTPArchive::Release::Architectures "all";
+          APT::FTPArchive::Release::Components "main";
+          EOF
+
+          apt-ftparchive \
+            -c apt-release.conf \
+            release repo/dists/stable \
             > repo/dists/stable/Release
 
       - name: Commit generated metadata
