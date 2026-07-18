@@ -1,3 +1,4 @@
+
 name: Update APT Repository
 
 on:
@@ -29,14 +30,16 @@ jobs:
         run: |
           set -e
 
-          mkdir -p repo/dists/stable/main/binary-all
+          cd repo
 
-          dpkg-scanpackages repo/pool /dev/null \
-            > repo/dists/stable/main/binary-all/Packages
+          mkdir -p dists/stable/main/binary-all
 
-          gzip -9 -kf repo/dists/stable/main/binary-all/Packages
+          dpkg-scanpackages pool /dev/null \
+            > dists/stable/main/binary-all/Packages
 
-          cat > apt-release.conf <<EOF
+          gzip -9 -kf dists/stable/main/binary-all/Packages
+
+          cat > ../apt-release.conf <<EOF
           APT::FTPArchive::Release::Origin "SnowOS";
           APT::FTPArchive::Release::Label "SnowOS Repository";
           APT::FTPArchive::Release::Suite "stable";
@@ -46,9 +49,9 @@ jobs:
           EOF
 
           apt-ftparchive \
-            -c apt-release.conf \
-            release repo/dists/stable \
-            > repo/dists/stable/Release
+            -c ../apt-release.conf \
+            release dists/stable \
+            > dists/stable/Release
 
       - name: Commit generated metadata
         run: |
