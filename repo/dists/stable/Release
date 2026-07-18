@@ -1,38 +1,38 @@
-Architectures: all amd64 arm64
+Architectures: all
 Codename: stable
 Components: main
-Date: Sat, 18 Jul 2026 19:41:54 +0000
+Date: Sat, 18 Jul 2026 19:44:10 +0000
 Label: SnowOS Repository
 Origin: SnowOS
 Suite: stable
 MD5Sum:
- 2fe6586fc64535d7cce9d552dc48999c              157 Release
+ a3d69a4a38fd0a3cf1c4eab33299f346              145 Release
  76ba04e2dfa64e0153e4a3c263497658              347 main/binary-all/Packages
- 4b3bfecbdffdf06f4bfc37e83ac8123d              287 main/binary-all/Packages.gz
+ c6a256854aaab3ebbbac3e4a1563cfee              287 main/binary-all/Packages.gz
  76ba04e2dfa64e0153e4a3c263497658              347 main/binary-amd64/Packages
  4b3bfecbdffdf06f4bfc37e83ac8123d              287 main/binary-amd64/Packages.gz
  76ba04e2dfa64e0153e4a3c263497658              347 main/binary-arm64/Packages
  4b3bfecbdffdf06f4bfc37e83ac8123d              287 main/binary-arm64/Packages.gz
 SHA1:
- 283658c4ce0797969859aa8f880a0baec7498c89              157 Release
+ 4c303f588689911184ed3029fbdedf976903940e              145 Release
  f3b81676e635208a5b08ca1c767965948b9628cd              347 main/binary-all/Packages
- f7613fec0d70f3d05155edbed686ee80bfcde5b3              287 main/binary-all/Packages.gz
+ c72acbb4ce7bf8e4f071cfdc68200ff52f68b532              287 main/binary-all/Packages.gz
  f3b81676e635208a5b08ca1c767965948b9628cd              347 main/binary-amd64/Packages
  f7613fec0d70f3d05155edbed686ee80bfcde5b3              287 main/binary-amd64/Packages.gz
  f3b81676e635208a5b08ca1c767965948b9628cd              347 main/binary-arm64/Packages
  f7613fec0d70f3d05155edbed686ee80bfcde5b3              287 main/binary-arm64/Packages.gz
 SHA256:
- bdb37c42f57686ef5e966e48cc9f2ea94c5325608ddb994feb6878d5a5bb1ee2              157 Release
+ e666e9a182566dc50c942261433638001d4f3b026546cb1a1cc8a2e020f51e8e              145 Release
  44ad7fccc190fad5de54578ee271ea0d7ab22eeba2d421739a0d43d97a49c620              347 main/binary-all/Packages
- dd2ece74448fb4857ca20227d8a485b2138c68babc4fe815ca0cc6ea94235a41              287 main/binary-all/Packages.gz
+ caa19820602e64058324272cd250d37205dce6994311f39b728bae58cbb1404a              287 main/binary-all/Packages.gz
  44ad7fccc190fad5de54578ee271ea0d7ab22eeba2d421739a0d43d97a49c620              347 main/binary-amd64/Packages
  dd2ece74448fb4857ca20227d8a485b2138c68babc4fe815ca0cc6ea94235a41              287 main/binary-amd64/Packages.gz
  44ad7fccc190fad5de54578ee271ea0d7ab22eeba2d421739a0d43d97a49c620              347 main/binary-arm64/Packages
  dd2ece74448fb4857ca20227d8a485b2138c68babc4fe815ca0cc6ea94235a41              287 main/binary-arm64/Packages.gz
 SHA512:
- c07d12d8d1459cc2ad4fcbd33d93cb857899a78287e63501da9ff013214bba7922304efd2571d20dd0c0e266300121a390a2f456256245a693d3a515672761df              157 Release
+ e7638abe7795e8f36860b794ae6f513c62d9cb2e910ef6d68eb80fba83c00106d5e0b66314c5a87ba3508b658eea1f61f51f5884924eece5daedbda35c77d821              145 Release
  a7b21b7aaf609efe92d78285fa01325be50e83e00d46ed79230f1141d1ed969aa3cfd805b0b76a7cc724c1fd3b375f6f4eac454a5f546ee8499e795175b24197              347 main/binary-all/Packages
- 2a26a49c9616bb4bf8fd7609fe624d4896412d25f212e5bcf42365f62908efd3908fb3341a45fb9e77774c18712142a7a2efd97cf6938896b4b7ff18aeb367a0              287 main/binary-all/Packages.gz
+ 4d095731d1a6aa47ee6ab93cd90498ee1ae16ca482737a32e144f0e9441cd35fe7d70f14443612aea3404486bba8af4a8a1151ab88f4a7be571a08597d297f48              287 main/binary-all/Packages.gz
  a7b21b7aaf609efe92d78285fa01325be50e83e00d46ed79230f1141d1ed969aa3cfd805b0b76a7cc724c1fd3b375f6f4eac454a5f546ee8499e795175b24197              347 main/binary-amd64/Packages
  2a26a49c9616bb4bf8fd7609fe624d4896412d25f212e5bcf42365f62908efd3908fb3341a45fb9e77774c18712142a7a2efd97cf6938896b4b7ff18aeb367a0              287 main/binary-amd64/Packages.gz
  a7b21b7aaf609efe92d78285fa01325be50e83e00d46ed79230f1141d1ed969aa3cfd805b0b76a7cc724c1fd3b375f6f4eac454a5f546ee8499e795175b24197              347 main/binary-arm64/Packages
