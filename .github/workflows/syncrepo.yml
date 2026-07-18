@@ -29,25 +29,19 @@ jobs:
         run: |
           set -e
 
+          mkdir -p repo/dists/stable/main/binary-all
+
           dpkg-scanpackages repo/pool /dev/null \
             > repo/dists/stable/main/binary-all/Packages
 
-          cp repo/dists/stable/main/binary-all/Packages \
-            repo/dists/stable/main/binary-arm64/Packages
-
-          cp repo/dists/stable/main/binary-all/Packages \
-            repo/dists/stable/main/binary-amd64/Packages
-
           gzip -9 -kf repo/dists/stable/main/binary-all/Packages
-          gzip -9 -kf repo/dists/stable/main/binary-arm64/Packages
-          gzip -9 -kf repo/dists/stable/main/binary-amd64/Packages
 
           cat > apt-release.conf <<EOF
           APT::FTPArchive::Release::Origin "SnowOS";
           APT::FTPArchive::Release::Label "SnowOS Repository";
           APT::FTPArchive::Release::Suite "stable";
           APT::FTPArchive::Release::Codename "stable";
-          APT::FTPArchive::Release::Architectures "all amd64 arm64";
+          APT::FTPArchive::Release::Architectures "all";
           APT::FTPArchive::Release::Components "main";
           EOF
 
