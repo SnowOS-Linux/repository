@@ -1,0 +1,14 @@
+Package: snowi
+Version: 1.0
+Architecture: any
+Maintainer: SnowOS Team
+Depends: bash, coreutils, curl, debconf, passwd, python3, python-is-python3, zsh, git
+Filename: pool/main/s/snowi/snowi_1.0_all.deb
+Size: 3136
+MD5sum: 649801737c95ec2db862878f02281c2a
+SHA1: 2f62485db8d4254d1d8f5292bcbbfa3bf06dba02
+SHA256: f887d2bfa0d3f25023770b82b886562f15bb2fe8ce8a7390d5fb0f7e5e2a2d7e
+Section: admin
+Priority: optional
+Description: SnowOS installer utility
+

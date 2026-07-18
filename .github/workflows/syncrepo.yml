@@ -15,39 +15,37 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Install required packages
+      - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y dpkg-dev apt-utils
+          sudo apt-get install -y dpkg-dev apt-utils gzip
 
       - name: Generate APT metadata
         run: |
-          set -euo pipefail
+          set -e
 
-          cd repo
+          mkdir -p repo/dists/stable/main/binary-all
 
-          dpkg-scanpackages . /dev/null > Packages
-          gzip -9 -kf Packages
+          dpkg-scanpackages repo/pool /dev/null \
+            > repo/dists/stable/main/binary-all/Packages
 
-          apt-ftparchive release . > Release
+          gzip -9 -kf repo/dists/stable/main/binary-all/Packages
 
-      - name: Commit changes
+          apt-ftparchive release repo/dists/stable \
+            > repo/dists/stable/Release
+
+      - name: Commit generated metadata
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add repo/Packages repo/Packages.gz repo/Release
+          git add repo/dists
 
           if git diff --cached --quiet; then
-            echo "No repository metadata changes."
+            echo "No metadata changes."
             exit 0
           fi
 
           git commit -m "Update APT repository metadata"
-
-      - name: Push changes
-        run: |
-          git push origin HEAD:main
+          git push
