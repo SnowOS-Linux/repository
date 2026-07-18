@@ -1,4 +1,4 @@
-name: Update /repo/Packages
+name: Update APT Repository
 
 on:
   push:
@@ -9,28 +9,45 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  update:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone repository
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Install dependencies
-        run: sudo apt update && sudo apt install -y dpkg-dev gzip
-
-      - name: Generate Packages index
+      - name: Install required packages
         run: |
-          cd repo
-          dpkg-scanpackages . /dev/null > Packages
-          gzip -k -f Packages
+          sudo apt-get update
+          sudo apt-get install -y dpkg-dev apt-utils
 
-      - name: Commit and push changes
+      - name: Generate APT metadata
+        run: |
+          set -euo pipefail
+
+          cd repo
+
+          dpkg-scanpackages . /dev/null > Packages
+          gzip -9 -kf Packages
+
+          apt-ftparchive release . > Release
+
+      - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add repo/Packages repo/Packages.gz
+          git add repo/Packages repo/Packages.gz repo/Release
 
-          git commit -m "Update Packages index" || echo "No changes to commit"
-          git push
+          if git diff --cached --quiet; then
+            echo "No repository metadata changes."
+            exit 0
+          fi
+
+          git commit -m "Update APT repository metadata"
+
+      - name: Push changes
+        run: |
+          git push origin HEAD:main
